@@ -73,6 +73,9 @@ app.get("/api/:record", async (req, res) => {
     });
   }
 });
+app.get("/root", (req, res) => {
+  return res.status(200).json({ message: "application working" });
+});
 
 app.listen(PORT, () => {
   console.log(`App running at http://localhost:${PORT}`);
