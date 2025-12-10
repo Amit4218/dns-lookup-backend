@@ -27,7 +27,7 @@ const RECORD_TYPES = [
   "SRV",
 ];
 
-const dnsResolvers = {
+export const dnsResolvers = {
   A: dns.resolve4,
   AAAA: dns.resolve6,
   CAA: dns.resolveCaa,
@@ -77,6 +77,8 @@ app.get("/root", (req, res) => {
   return res.status(200).json({ message: "application working" });
 });
 
-app.listen(PORT, () => {
-  console.log(`App running at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`App running at http://localhost:${port}`);
+  });
+}
