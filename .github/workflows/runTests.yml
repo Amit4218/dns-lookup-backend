@@ -5,22 +5,23 @@ on:
       branches:["main"]
 
 jobs:
-  run-on:ubuntu-latest
+  deploy:
+    runs-on:ubuntu-latest
 
-  setps:
+    steps:
+    
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-  - name: Checkout repository
-    uses: actions/checkout@v3
+    - name: Install Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: "22"
 
-  - name: Install Node
-    uses: actions/setup-node@v3
-    with:
-      node-version: "22"
+    - name: Install dependencies
+      run: npm install
 
-  - name: Install dependencies
-    run: npm install
-
-  - name: Run tests
-    run: npm test
+    - name: Run tests
+      run: npm test
 
       
