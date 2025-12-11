@@ -34,7 +34,7 @@ export const dnsResolvers = {
   CNAME: dns.resolveCname,
   MX: dns.resolveMx,
   NS: dns.resolveNs,
-  PTR: dns.resolvePtr,
+  PTR: dns.reverse,
   SOA: dns.resolveSoa,
   TXT: dns.resolveTxt,
   SRV: dns.resolveSrv,
@@ -79,6 +79,6 @@ app.get("/root", (req, res) => {
 
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
-    console.log(`App running at http://localhost:${port}`);
+    console.log(`App running at http://localhost:${PORT}`);
   });
 }
